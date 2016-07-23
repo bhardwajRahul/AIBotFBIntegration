@@ -8,7 +8,15 @@ const request = require('request');
 const JSONbig = require('json-bigint');
 const async = require('async');
 
-const REST_PORT = (process.env.PORT || 5000);
+var app = express();
+
+ app.set('port', (process.env.PORT || 5000));
+ app.use(express.static(__dirname + '/'));
+
+ app.get('/', function(request, response) {
+ response.send('Hello World!');
+ });
+//const REST_PORT = (process.env.PORT || 5000);
 const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
 const APIAI_LANG = process.env.APIAI_LANG || 'en';
 const FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
